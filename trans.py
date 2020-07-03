@@ -39,7 +39,6 @@ def rotar_prro(np_matriz, gradosX=0, gradosY=0, gradosZ=0):
     if gradosX > 0 and gradosY == 0 and gradosZ == 0:
         q = Quaternion(a=radianesX, n=np.array([1., 0., 0.]))
         for vector in np_matriz:
-            # print(radianesX, vector, q)
             nuevo_vector = q.rotatePoint(vector)
             np_matriz_rotada.append(nuevo_vector)
         return np_matriz_rotada
@@ -47,14 +46,12 @@ def rotar_prro(np_matriz, gradosX=0, gradosY=0, gradosZ=0):
     elif gradosX == 0 and gradosY > 0 and gradosZ == 0:
         q = Quaternion(a=radianesY, n=np.array([0., 1., 0.]))
         for vector in np_matriz:
-            # print(radianesX, vector, q)
             nuevo_vector = q.rotatePoint(vector)
             np_matriz_rotada.append(nuevo_vector)
         return np_matriz_rotada
     elif gradosX == 0 and gradosY == 0 and gradosZ > 0:
         q = Quaternion(a=radianesZ, n=np.array([0., 0., 1.]))
         for vector in np_matriz:
-            # print(radianesX, vector, q)
             nuevo_vector = q.rotatePoint(vector)
             np_matriz_rotada.append(nuevo_vector)
         return np_matriz_rotada
@@ -86,21 +83,6 @@ def rehacer_XYZ(matriz, nombres):
         f.write("\t".join(linea_string))
         f.write("\n")
         f.close()
-
-    # print(mtrx)
-
-    # for index, vector in enumerate(lista):
-    #     final.append(nombres[index])
-    #     x = "\t".join(vector)
-    #     print(x)
-
-    # print(f"{nombres[index]}\t{vector}")
-
-    # final.append(vector)
-    # final.insert(0, nombres[index])
-    # matriz_final.append(final)
-    # print(matriz_final)
-
 
 def run():
     data = abrir_archivo(argv[1])
